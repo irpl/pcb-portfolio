@@ -8,6 +8,8 @@ A selection of custom printed circuit boards I have designed and built, presente
 
 *Designed for the IoT course I teach at UWI.*
 
+**Design files:** [KiCad schematic, layout, and project files →](https://github.com/irpl/ecse-simple-smart-hub-project-circuit)
+
 This is the coursework platform board for the Internet of Things course I teach. It gives students a single board that covers the full loop of an IoT system: read the physical world, talk to a server, and act on the physical world in response.
 
 An onboard **ESP32** reads a temperature sensor and a PIR motion sensor, and reports to a remote server. The server decides what should happen and instructs the ESP32, which then switches power through one of two **MOSFETs** to the corresponding output terminal. In other words, incoming power is routed to either of two loads under remote control — the two outputs are silkscreened `FAN` and `LIGHT`, which is the scenario students work through.
@@ -28,6 +30,8 @@ The bare board and two populated builds are shown below — one with the ESP32 d
 
 ## 2. Raspberry Pi Zero Weather Station HAT
 
+**Firmware:** [pi-weather — the Python code that runs on this board →](https://github.com/irpl/pi-weather)
+
 A custom HAT for the Raspberry Pi Zero, built to drive a weather station kit I had bought a few years earlier. Rather than leave the circuit on a breadboard or commit it to perfboard, I designed a proper HAT for it.
 
 I started from a basic Pi Zero HAT footprint found on GitHub, which gave me only the board outline, the four mounting holes, and the GPIO header. **Everything else on the board is my own design.**
@@ -45,6 +49,8 @@ I started from a basic Pi Zero HAT footprint found on GitHub, which gave me only
 ---
 
 ## 3. Water Quality Sensor Interface Board
+
+**Server:** [watermon — the listener this board uploads to →](https://github.com/irpl/watermon)
 
 The oldest board here, built to get readings off a water quality sensor and onto a server with no wired network anywhere nearby.
 

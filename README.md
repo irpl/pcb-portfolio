@@ -30,7 +30,7 @@ The bare board and two populated builds are shown below — one with the ESP32 d
 
 ## 2. Raspberry Pi Zero Weather Station HAT
 
-**Firmware:** [pi-weather — the Python code that runs on this board →](https://github.com/irpl/pi-weather)
+**Manufacturing files:** [Gerbers and drill file](design-files/pi-weather-hat/) &nbsp;•&nbsp; **Firmware:** [pi-weather — the Python code that runs on this board →](https://github.com/irpl/pi-weather)
 
 A custom HAT for the Raspberry Pi Zero, built to drive a weather station kit I had bought a few years earlier. Rather than leave the circuit on a breadboard or commit it to perfboard, I designed a proper HAT for it.
 
@@ -45,6 +45,12 @@ I started from a basic Pi Zero HAT footprint found on GitHub, which gave me only
 | Bare boards (fab batch) | Assembled | Mounted on the Pi Zero |
 |---|---|---|
 | ![Bare weather station HATs](images/pi-weather-hat-bare-batch.jpg) | ![Assembled weather station HAT](images/pi-weather-hat-assembled.jpg) | ![HAT stacked on a Pi Zero](images/pi-weather-hat-stacked.jpg) |
+
+Laid out in **KiCad** as a two-layer board and fabricated in November 2020. The [Gerbers and drill file](design-files/pi-weather-hat/) are the exact set sent to the fab, so the board is reproducible as-is. Renders below are generated from those Gerbers — copper, soldermask, silkscreen, and board outline.
+
+| Top | Bottom |
+|---|---|
+| ![Gerber render, top layer](images/pi-weather-hat-gerber-top.png) | ![Gerber render, bottom layer](images/pi-weather-hat-gerber-bottom.png) |
 
 ---
 

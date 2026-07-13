@@ -50,7 +50,7 @@ I started from a basic Pi Zero HAT footprint found on GitHub, which gave me only
 
 ## 3. Water Quality Sensor Interface Board
 
-**Server:** [watermon — the listener this board uploads to →](https://github.com/irpl/watermon)
+**Design files:** [Eagle schematic and layout](design-files/water-quality-board/) &nbsp;•&nbsp; **Server:** [watermon — the listener this board uploads to →](https://github.com/irpl/watermon)
 
 The oldest board here, built to get readings off a water quality sensor and onto a server with no wired network anywhere nearby.
 
@@ -64,9 +64,11 @@ The sensor speaks **RS-232**, which a microcontroller cannot read directly. On t
 
 This one is essentially a protocol-and-transport bridge: a legacy serial instrument on one end, a cellular uplink on the other, and level translation in between.
 
-| Bare board | Assembled |
-|---|---|
-| ![Bare water quality interface board](images/water-quality-board-bare.jpg) | ![Assembled water quality interface board](images/water-quality-board-assembled.jpg) |
+The board was laid out in **Eagle** as a two-layer design; the schematic and layout are in [`design-files/water-quality-board/`](design-files/water-quality-board/). The render below is the copper layout — red is the top layer, blue the bottom.
+
+| Bare board | Assembled | Layout (2-layer) |
+|---|---|---|
+| ![Bare water quality interface board](images/water-quality-board-bare.jpg) | ![Assembled water quality interface board](images/water-quality-board-assembled.jpg) | ![Eagle copper layout](images/water-quality-board-layout.png) |
 
 ---
 

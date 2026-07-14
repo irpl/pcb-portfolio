@@ -16,9 +16,9 @@ An onboard **ESP32** reads a temperature sensor and a PIR motion sensor, and rep
 
 **Design notes**
 - ESP32 module footprint (`U1`) with `Enable` and `Boot` pads broken out for flashing.
-- Onboard buck regulation accepting a wide **4.5–28 V** input, so the board runs from a plain barrel-jack supply.
-- Two low-side MOSFET switches, each with a gate resistor and a heatsinkable TO-220 package for real loads.
-- Screw terminals throughout (`POWER IN`, `TEMP`, `PIR`, `FAN`, `LIGHT`) so students can wire and rewire the board without soldering.
+- A landing footprint for an off-the-shelf **4.5–28 V** buck module (`J6`), so the board runs from any plain barrel-jack supply without designing a regulator onto it.
+- Two low-side MOSFET switches (IRF540 in TO-220), each with a gate resistor, sized for real loads.
+- Screw terminals for `TEMP`, `FAN` and `LIGHT`, a barrel jack for `POWER IN`, and a 3-pin header for the `PIR` — so students can wire and rewire the board without soldering.
 
 The bare board and two populated builds are shown below — one with the ESP32 devkit soldered directly, and one built with female headers and a drop-in buck module so the ESP32 can be swapped out. Making the board survive a classroom full of students was as much a design constraint as the circuit itself.
 
@@ -37,8 +37,8 @@ A custom HAT for the Raspberry Pi Zero, built to drive a weather station kit I h
 I started from a basic Pi Zero HAT footprint found on GitHub, which gave me only the board outline, the four mounting holes, and the GPIO header. **Everything else on the board is my own design.**
 
 **Design notes**
-- A **BME280** provides temperature and humidity.
-- An **MCP3008** ADC reads the kit's resistive sensors, since the Pi has no analogue inputs of its own.
+- A footprint for a **BME280** breakout provides temperature and humidity (not fitted in the photos below).
+- An **MCP3008** ADC reads the kit's resistive wind vane, since the Pi has no analogue inputs of its own.
 - Two **RJ11/RJ12 jacks** bring in the kit's wind and rainfall sensors — silkscreened `Wind` and `RainFall` — so the outdoor sensors plug in with standard cable instead of flying leads.
 - Sized and drilled to sit on the Pi Zero as a proper HAT, so the finished unit stays compact enough to deploy.
 
@@ -46,9 +46,9 @@ Laid out in **KiCad** as a two-layer board and fabricated in November 2020. The 
 
 The original KiCad project for this board was lost. The schematic and layout in that repo were **reconstructed from the Gerbers** — the netlist recovered from the copper itself, then cross-checked against the firmware — and are clearly labelled as such.
 
-| Bare boards (fab batch) | Assembled | Mounted on the Pi Zero |
+| Bare boards (fab batch) | Assembled, seated on a Pi Zero | HAT and Pi Zero (exploded) |
 |---|---|---|
-| ![Bare weather station HATs](images/pi-weather-hat-bare-batch.jpg) | ![Assembled weather station HAT](images/pi-weather-hat-assembled.jpg) | ![HAT stacked on a Pi Zero](images/pi-weather-hat-stacked.jpg) |
+| ![Bare weather station HATs](images/pi-weather-hat-bare-batch.jpg) | ![Assembled weather station HAT](images/pi-weather-hat-assembled.jpg) | ![HAT above an unmated Pi Zero](images/pi-weather-hat-stacked.jpg) |
 
 ---
 
@@ -58,12 +58,12 @@ The original KiCad project for this board was lost. The schematic and layout in 
 
 The oldest board here, built to get readings off a water quality sensor and onto a server with no wired network anywhere nearby.
 
-The sensor speaks **RS-232**, which a microcontroller cannot read directly. On this board an **Arduino Nano** sits behind a **MAX233** transceiver (a MAX232-family part) that converts the sensor's incoming RS-232 signals down to TTL serial the Nano can read. The Nano then pushes that data to a remote server over the cellular network using a **SIM800** module with an ordinary SIM and data plan.
+The sensor speaks **RS-232**, which a microcontroller cannot read directly. On this board an **Arduino Nano** sits behind a **MAX233** transceiver that converts the sensor's incoming RS-232 signals down to TTL serial the Nano can read. The Nano then pushes that data to a remote server over the cellular network using a **SIM800** module with an ordinary SIM and data plan.
 
 **Design notes**
+- **MAX233** rather than the more common MAX232: it integrates the charge-pump capacitors, so the RS-232 level shifter needs no external capacitors at all — fewer parts to place and fewer things to fail in the field.
 - **DB9 connector** on the board edge so the sensor plugs straight in with a standard serial cable.
-- MAX233 in a socket, so the transceiver can be replaced in the field without a soldering iron.
-- Headers for the Arduino Nano and the SIM800 cellular module, plus an ICSP header and a reset button.
+- Footprints for the Arduino Nano and the Adafruit **SIM800** cellular module, plus a 2×3 ICSP header.
 - Screw terminal for field power.
 
 This one is essentially a protocol-and-transport bridge: a legacy serial instrument on one end, a cellular uplink on the other, and level translation in between.
@@ -78,6 +78,6 @@ The board was laid out in **Eagle** as a two-layer design; the [schematic and la
 
 ## About
 
-These boards span roughly seven years of design work, from the RS-232-to-cellular bridge through to the current teaching platform. Across all three the common thread is designing boards to be **built, deployed, and maintained** — socketed parts, screw terminals, standard connectors, and wide-input power — rather than boards that only work on the bench.
+These boards span roughly seven years of design work, from the RS-232-to-cellular bridge through to the current teaching platform. Across all three the common thread is designing boards to be **built, deployed, and maintained** — screw terminals and standard connectors instead of flying leads, off-the-shelf modules on plain header footprints so a failed part can be swapped, and part choices (like the MAX233) that cut the component count down — rather than boards that only work on the bench.
 
 Happy to discuss any of them in more detail, including schematics and layout.

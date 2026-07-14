@@ -21,9 +21,22 @@ An onboard **ESP32** reads a temperature sensor and a PIR motion sensor, and rep
 
 The bare board and two populated builds are shown below — one with the ESP32 devkit soldered directly, and one built with female headers and a drop-in buck module so the ESP32 can be swapped out. Making the board survive a classroom full of students was as much a design constraint as the circuit itself.
 
-| Bare board | Assembled | Socketed variant |
-|---|---|---|
-| ![Bare ESP32 controller board](images/esp32-controller-bare.jpg) | ![Assembled ESP32 controller board](images/esp32-controller-assembled.jpg) | ![Socketed variant with buck module](images/esp32-controller-buck-variant.jpg) |
+<table>
+  <tr>
+    <th>Bare board</th>
+    <th colspan="2">The same board, built two ways</th>
+  </tr>
+  <tr>
+    <td><img src="images/esp32-controller-bare.jpg" alt="Bare ESP32 controller board"></td>
+    <td><img src="images/esp32-controller-assembled.jpg" alt="ESP32 devkit soldered directly to the board"></td>
+    <td><img src="images/esp32-controller-buck-variant.jpg" alt="Board built with female headers and a drop-in buck module"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td align="center"><sub>ESP32 soldered directly</sub></td>
+    <td align="center"><sub>ESP32 on removable headers</sub></td>
+  </tr>
+</table>
 
 ---
 

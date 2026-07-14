@@ -30,7 +30,7 @@ The bare board and two populated builds are shown below — one with the ESP32 d
 
 ## 2. Raspberry Pi Zero Weather Station HAT
 
-**Manufacturing files:** [Gerbers and drill file](design-files/pi-weather-hat/) &nbsp;•&nbsp; **Firmware:** [pi-weather — the Python code that runs on this board →](https://github.com/irpl/pi-weather)
+**Design files:** [schematic, layout, and fab-ready Gerbers →](https://github.com/irpl/pi-zero-weather-hat-circuit) &nbsp;•&nbsp; **Firmware:** [pi-weather →](https://github.com/irpl/pi-weather)
 
 A custom HAT for the Raspberry Pi Zero, built to drive a weather station kit I had bought a few years earlier. Rather than leave the circuit on a breadboard or commit it to perfboard, I designed a proper HAT for it.
 
@@ -42,21 +42,17 @@ I started from a basic Pi Zero HAT footprint found on GitHub, which gave me only
 - Two **RJ11/RJ12 jacks** bring in the kit's wind and rainfall sensors — silkscreened `Wind` and `RainFall` — so the outdoor sensors plug in with standard cable instead of flying leads.
 - Sized and drilled to sit on the Pi Zero as a proper HAT, so the finished unit stays compact enough to deploy.
 
+Laid out in **KiCad** as a two-layer board and fabricated in November 2020. The [design files](https://github.com/irpl/pi-zero-weather-hat-circuit) include the exact Gerber and drill set sent to the fab, so the board is reproducible as-is.
+
 | Bare boards (fab batch) | Assembled | Mounted on the Pi Zero |
 |---|---|---|
 | ![Bare weather station HATs](images/pi-weather-hat-bare-batch.jpg) | ![Assembled weather station HAT](images/pi-weather-hat-assembled.jpg) | ![HAT stacked on a Pi Zero](images/pi-weather-hat-stacked.jpg) |
-
-Laid out in **KiCad** as a two-layer board and fabricated in November 2020. The [Gerbers and drill file](design-files/pi-weather-hat/) are the exact set sent to the fab, so the board is reproducible as-is. Renders below are generated from those Gerbers — copper, soldermask, silkscreen, and board outline.
-
-| Top | Bottom |
-|---|---|
-| ![Gerber render, top layer](images/pi-weather-hat-gerber-top.png) | ![Gerber render, bottom layer](images/pi-weather-hat-gerber-bottom.png) |
 
 ---
 
 ## 3. Water Quality Sensor Interface Board
 
-**Design files:** [Eagle schematic and layout](design-files/water-quality-board/) &nbsp;•&nbsp; **Server:** [watermon — the listener this board uploads to →](https://github.com/irpl/watermon)
+**Design files:** [Eagle schematic and layout →](https://github.com/irpl/water-quality-sensor-circuit) &nbsp;•&nbsp; **Server:** [watermon — the listener this board uploads to →](https://github.com/irpl/watermon)
 
 The oldest board here, built to get readings off a water quality sensor and onto a server with no wired network anywhere nearby.
 
@@ -70,11 +66,11 @@ The sensor speaks **RS-232**, which a microcontroller cannot read directly. On t
 
 This one is essentially a protocol-and-transport bridge: a legacy serial instrument on one end, a cellular uplink on the other, and level translation in between.
 
-The board was laid out in **Eagle** as a two-layer design; the schematic and layout are in [`design-files/water-quality-board/`](design-files/water-quality-board/). The render below is the copper layout — red is the top layer, blue the bottom.
+The board was laid out in **Eagle** as a two-layer design; the [schematic and layout](https://github.com/irpl/water-quality-sensor-circuit) are available separately.
 
-| Bare board | Assembled | Layout (2-layer) |
-|---|---|---|
-| ![Bare water quality interface board](images/water-quality-board-bare.jpg) | ![Assembled water quality interface board](images/water-quality-board-assembled.jpg) | ![Eagle copper layout](images/water-quality-board-layout.png) |
+| Bare board | Assembled |
+|---|---|
+| ![Bare water quality interface board](images/water-quality-board-bare.jpg) | ![Assembled water quality interface board](images/water-quality-board-assembled.jpg) |
 
 ---
 

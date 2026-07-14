@@ -15,7 +15,6 @@ This is the coursework platform board for the Internet of Things course I teach.
 An onboard **ESP32** reads a temperature sensor and a PIR motion sensor, and reports to a remote server. The server decides what should happen and instructs the ESP32, which then switches power through one of two **MOSFETs** to the corresponding output terminal. In other words, incoming power is routed to either of two loads under remote control — the two outputs are silkscreened `FAN` and `LIGHT`, which is the scenario students work through.
 
 **Design notes**
-- ESP32 devkit footprint (`U1`). The `Enable`, `Boot` and `USB` silkscreen marks where the devkit's own buttons and USB port land, so the board can be assembled and oriented correctly — they are markings, not broken-out pads.
 - A landing footprint for an off-the-shelf **4.5–28 V** buck module (`J6`), so the board runs from any plain barrel-jack supply without designing a regulator onto it.
 - Two low-side MOSFET switches (**IRLZ44N**, TO-220), each with a gate resistor. Logic-level parts were chosen deliberately: a standard MOSFET like the IRF-series needs several volts more than an ESP32's 3.3 V GPIO can supply to fully turn on, and would run hot in partial conduction. The IRLZ44N is fully enhanced from logic-level drive, so the ESP32 can switch real loads directly with no gate driver.
 - Screw terminals for `TEMP`, `FAN` and `LIGHT`, a barrel jack for `POWER IN`, and a 3-pin header for the `PIR` — so students can wire and rewire the board without soldering.

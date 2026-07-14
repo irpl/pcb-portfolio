@@ -17,7 +17,7 @@ An onboard **ESP32** reads a temperature sensor and a PIR motion sensor, and rep
 **Design notes**
 - ESP32 devkit footprint (`U1`). The `Enable`, `Boot` and `USB` silkscreen marks where the devkit's own buttons and USB port land, so the board can be assembled and oriented correctly — they are markings, not broken-out pads.
 - A landing footprint for an off-the-shelf **4.5–28 V** buck module (`J6`), so the board runs from any plain barrel-jack supply without designing a regulator onto it.
-- Two low-side MOSFET switches (IRF540 in TO-220), each with a gate resistor, sized for real loads.
+- Two low-side MOSFET switches (**IRLZ44N**, TO-220), each with a gate resistor. Logic-level parts were chosen deliberately: a standard MOSFET like the IRF-series needs several volts more than an ESP32's 3.3 V GPIO can supply to fully turn on, and would run hot in partial conduction. The IRLZ44N is fully enhanced from logic-level drive, so the ESP32 can switch real loads directly with no gate driver.
 - Screw terminals for `TEMP`, `FAN` and `LIGHT`, a barrel jack for `POWER IN`, and a 3-pin header for the `PIR` — so students can wire and rewire the board without soldering.
 
 The bare board and two populated builds are shown below — one with the ESP32 devkit soldered directly, and one built with female headers and a drop-in buck module so the ESP32 can be swapped out. Making the board survive a classroom full of students was as much a design constraint as the circuit itself.

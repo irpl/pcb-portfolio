@@ -24,7 +24,7 @@ The bare board and two populated builds are shown below — one with the ESP32 d
 <table>
   <tr>
     <th>Bare board</th>
-    <th colspan="2">The same board, built two ways</th>
+    <th colspan="2">Assembled board</th>
   </tr>
   <tr>
     <td><img src="images/esp32-controller-bare.jpg" alt="Bare ESP32 controller board"></td>
